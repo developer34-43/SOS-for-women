@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand palette (HSL) */
+    --background: 213 59% 8%; /* #081120 */
+    --background-deep: 213 64% 5%;
+    --foreground: 0 0% 100%; /* white */
+
+    --card: 213 40% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 213 44% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 221 83% 53%; /* #2563EB */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 213 30% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 213 26% 20%;
+    --muted-foreground: 213 16% 65%;
+
+    --accent: 221 83% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%; /* #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%; /* #22C55E */
+    --success-foreground: 0 0% 100%;
+
+    --border: 213 24% 22%;
+    --input: 213 24% 22%;
+    --ring: 221 83% 53%;
+
+    --chart-1: 221 83% 53%;
+    --chart-2: 142 71% 45%;
+    --chart-3: 0 84% 60%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 280 65% 60%;
+
+    --radius: 1.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior-y: none;
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface */
+  .glass {
+    @apply border border-white/10 bg-white/[0.06] backdrop-blur-xl;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .glass-strong {
+    @apply border border-white/[0.12] bg-white/[0.09] backdrop-blur-2xl;
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .glass-card {
+    @apply rounded-3xl border border-white/10 bg-white/[0.06] backdrop-blur-xl;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  /* Hide scrollbar but keep scroll */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Subtle radial glow backdrop used across the app shell */
+.app-aurora {
+  background:
+    radial-gradient(
+      90% 60% at 50% 0%,
+      rgba(37, 99, 235, 0.22) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      70% 50% at 100% 20%,
+      rgba(239, 68, 68, 0.1) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      80% 60% at 0% 30%,
+      rgba(34, 197, 94, 0.08) 0%,
+      transparent 55%
+    ),
+    hsl(var(--background));
+}
